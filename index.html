@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Say Hi</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="color-scheme" content="light" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/css/intlTelInput.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Say Hi!</h1>
+        <form>
+            <fieldset role="group">
+                <input id="phone" type="tel" />
+                <input id="btnPaste" style="padding:0px;margin:0px" type="button" value="➤" data-tooltip="Paste from Clipboard" />
+            </fieldset>
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/intlTelInput.min.js"></script>
+    <script>
+        const input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/utils.js",
+        });
+    </script>
+</body>
+</html>
