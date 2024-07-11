@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/css/intlTelInput.css">
 </head>
 <body>
-    <main class="container">
-        <h1>Say Hi!</h1>
+    <main class="container" style="text-align:center">
+        <hgroup>
+            <h1>Say Hi!</h1>
+        </hgroup>
         <form>
-            <fieldset>
-                <input id="phone" type="tel" />
-                <input id="btnPaste" style="padding:0px;margin:0px" type="button" value="➤" data-tooltip="Paste from Clipboard" />
+            <fieldset role="group">
+                <input id="phone" type="tel" placeholder="Enter WhatsApp Number"  autofocus />
+                <br />
+                <button>➤</button>
             </fieldset>
         </form>
     </main>
@@ -23,6 +26,8 @@
     <script>
         const input = document.querySelector("#phone");
         window.intlTelInput(input, {
+            initialCountry: "in",
+            strictMode: true,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/utils.js",
         });
     </script>
