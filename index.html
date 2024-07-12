@@ -12,29 +12,46 @@
 <body>
     <main class="container" style="text-align:center">
         <hgroup>
-            <h1>Say Hi!</h1>
+            <h1>👋</h1>
         </hgroup>
-        <form>
+        <form onsubmit="sendMessage()">
             <fieldset role="group">
-                <input id="phone" type="number" style="font-size:large" placeholder="Enter WhatsApp Number" autofocus />
+                <input id="phone" type="tel" style="font-size:x-large" placeholder="Enter WhatsApp Number" autofocus />
                 <br />
-                <button>➤</button>
+                <button id="btnSend" type="submit">➤</button>
             </fieldset>
+            <input id="btnPaste" onclick="onPasteClick()" type="button" value="📋 Paste WhatsApp Number" data-tooltip="Paste from Clipboard" />
         </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/intlTelInput.min.js"></script>
     <script>
         const input = document.querySelector("#phone");
-        window.intlTelInput(input, {
+        const iti = window.intlTelInput(input, {
             initialCountry: "in",
             strictMode: true,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/utils.js",
         });
 
-        setTimeout(function () {
-            input.click();
-            input.focus();
-        }, 501);
+        async function onPasteClick() {
+            try {
+                input.value = "";
+                const text = await navigator.clipboard.readText();
+                let number = text.replace(/\D/g, '');
+                let ten = number.substring(number.length - 10);
+                document.querySelector('#phone').value += text.replace(/\D/g, '').substring(number.length - 10);
+            } catch (error) {
+                console.log('Failed to read clipboard. Using execCommand instead.');
+                document.querySelector('#phone').focus();
+                const result = document.execCommand('paste');
+            }
+        }
+
+        function sendMessage() {
+            debugger;
+            let mobileNumber = iti.getNumber();
+            let url = "https://wa.me/" + mobileNumber.substring(mobileNumber.length - 12);
+            window.open(url);
+        }
     </script>
 </body>
 </html>
