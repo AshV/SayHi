@@ -15,16 +15,16 @@
         <hgroup>
             <h1 style="color:#007a50">Say Hi!</h1>
             <br />
-            <h4>Connect in WhatsApp without saving number</h4>
+            <h4>Connect in <font style="color: var(--pico-primary); ">WhatsApp</font> without saving number</h4>
         </hgroup>
         <br />
         <form onsubmit="sendMessage()">
+            <input id="btnPaste" onclick="onPasteClick()" type="button" value="📋 Paste WhatsApp Number" data-tooltip="Paste from Clipboard" />
             <fieldset role="group">
                 <input id="phone" type="tel" style="font-size:x-large" placeholder="Enter Number" autofocus />
                 <br />
                 <button id="btnSend" type="submit">➤</button>
             </fieldset>
-            <input id="btnPaste" onclick="onPasteClick()" type="button" value="📋 Paste WhatsApp Number" data-tooltip="Paste from Clipboard" />
         </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/intlTelInput.min.js"></script>
