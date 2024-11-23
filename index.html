@@ -61,7 +61,7 @@
         function sendToWABusiness() {
             debugger;
             let mobileNumber = iti.getNumber();
-            let url = "whatsapp://send?number=" + mobileNumber.substring(mobileNumber.length - 12);
+            let url = "whatsapp://send?text=SayHi&phone=" + mobileNumber.substring(mobileNumber.length - 12);
             window.open(url);
         }
     </script>
