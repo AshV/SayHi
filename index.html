@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Say Hi!</title>
     <meta charset="utf-8">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/css/intlTelInput.css">
 </head>
+
 <body>
     <main class="container" style="text-align:center">
         <br />
@@ -19,14 +21,16 @@
         </hgroup>
         <br />
         <form onsubmit="sendMessage()">
-            <input id="btnPaste" onclick="onPasteClick()" type="button" value="📋 Paste WhatsApp Number" data-tooltip="Paste from Clipboard" />
+            <input id="btnPaste" onclick="onPasteClick()" type="button" value="📋 Paste WhatsApp Number"
+                data-tooltip="Paste from Clipboard" />
             <fieldset role="group">
                 <input id="phone" type="tel" style="font-size:x-large" placeholder="Enter Number" autofocus />
                 <br />
                 <button id="btnSend" type="submit">➤</button>
             </fieldset>
         </form>
-        <img src="img/whatsapp-business.png" onclick="sendToWABusiness()" />
+        <img alt="whatsapp-business" src="img/whatsapp-business.png" onclick="sendToWABusiness()" />
+        <img alt="telegram" src="img/telegram.png" onclick="sendToTelegram()" />
     </main>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.0/build/js/intlTelInput.min.js"></script>
     <script>
@@ -64,6 +68,14 @@
             let url = "whatsapp://send?text=SayHi&phone=" + mobileNumber.substring(mobileNumber.length - 12);
             window.open(url);
         }
+
+        function sendToTelegram() {
+            debugger;
+            let mobileNumber = iti.getNumber();
+            let url = "https://t.me/+" + mobileNumber.substring(mobileNumber.length - 12);
+            window.open(url);
+        }
     </script>
 </body>
+
 </html>
